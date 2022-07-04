@@ -1,0 +1,22 @@
+use lefti_joandreasergiu
+
+DROP PROCEDURE IF EXISTS how_many_missionaries;
+
+DELIMITER |
+CREATE PROCEDURE how_many_missionaries(IN gender VARCHAR(1), INOUT nr_email_address INT, OUT nr_missionaries INT)
+BEGIN
+ SELECT COUNT(m.Missionary_ID) INTO nr_missionaries
+ FROM  Missionaries AS m
+ WHERE Gender_MF=gender;
+ SELECT COUNT(m.Missionary_ID) INTO nr_email_address
+ FROM  Missionaries AS m
+ WHERE Gender_MF=gender &&  Email_Address!="";
+END |
+DELIMITER ;
+
+SET @val=0;
+ 
+
+CALL how_many_missionaries("m", @val, @nr);
+
+SELECT @val nr_adrese_email_gasite, @nr nr_misionari_de_genul_cautat;

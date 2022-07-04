@@ -1,0 +1,4 @@
+SELECT * FROM Donors INNER JOIN Donations USING(Donor_ID) INNER JOIN Ref_Payment_Methods USING(Payment_Method_Code)
+WHERE Donor_Details > "j"
+order by Date_of_Donation DESC
+LIMIT 3;
